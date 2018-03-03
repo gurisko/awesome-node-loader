@@ -1,9 +1,9 @@
 {
-  "name": "native-ext-loader",
-  "version": "1.0.0",
-  "description": "Loader for Node native extensions",
+  "name": "awesome-node-loader",
+  "version": "1.0.1",
+  "description": "Loader for Node files with webpack v4 support",
   "main": "index.js",
-  "repository": "https://github.com/smt116/node-native-loader",
+  "repository": "https://github.com/gurisko/awesome-node-loader",
   "scripts": {
   },
   "keywords": [
@@ -12,6 +12,9 @@
     "loader"
   ],
   "author": "Maciej Małecki <smt116@gmail.com>",
+  "contributors": [
+    "Matus Gura <matus.gura@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {
     "loader-utils": "^1.1.0"

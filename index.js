@@ -9,9 +9,10 @@ module.exports = function(content) {
 
   const config = Object.assign(defaultConfig, loaderUtils.getOptions(this));
 
+  const context = config.context || this.rootContext || (this.config && this.config.context);
   const fileName = loaderUtils.interpolateName(this, config.name, {
-    context: this.options.context,
-    content: content
+    content: content,
+    context: context,
   });
 
   if (this.emitFile) {

@@ -1,13 +1,13 @@
 # Node Native Loader
 
-Module for loading native files in Node and Electron applications. The project is inspired by the [node-addon-loader](https://github.com/ushu/node-addon-loader). It works in the similar way but **allows to build path in the runtime**.
+Module for loading native node files for webpack (including webpack@4 support).
 
 ## Install
 
 Add the package to the `package.json` file:
 
 ```bash
-$ yarn add --dev native-ext-loader
+$ yarn add --dev awesome-node-loader
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ Update `webpack.config.js` file's rules:
 module: {
   rules: [
     test: /\.node$/,
-    loader: 'native-ext-loader'
+    loader: 'awesome-node-loader'
   ]
 }
 ```
@@ -31,7 +31,7 @@ It is possible to adjust options:
 module: {
   rules: [
     test: /\.node$/,
-    loader: 'native-ext-loader',
+    loader: 'awesome-node-loader',
     options: {
       name: '[hex].[ext]',
       rewritePath: path.resolve(__dirname, 'dist')
