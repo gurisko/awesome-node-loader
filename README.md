@@ -34,7 +34,8 @@ module: {
     loader: 'awesome-node-loader',
     options: {
       name: '[hex].[ext]',
-      rewritePath: path.resolve(__dirname, 'dist')
+      rewritePath: path.resolve(__dirname, 'dist'),
+      useDirname: false
     }
   ]
 }
@@ -47,3 +48,7 @@ This option allows to change the file name in the output directory. You can use 
 ### `rewritePath`
 
 This options allows to set an absolute path. Note that it needs to remain `undefined` if you are building a package with embedded files.
+
+### `useDirname`
+
+This options chooses in between `_dirname` and `path.dirname(process.execPath)` when a relative `rewritePath` is passed.
