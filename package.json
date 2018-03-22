@@ -1,6 +1,6 @@
 {
   "name": "awesome-node-loader",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Loader for Node files with webpack v4 support",
   "main": "index.js",
   "repository": "https://github.com/gurisko/awesome-node-loader",
