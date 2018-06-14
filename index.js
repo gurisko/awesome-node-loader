@@ -5,7 +5,8 @@ module.exports = function(content) {
   const defaultConfig = {
     name: "[name].[ext]",
     rewritePath: undefined,
-    useDirname: true
+    useDirname: true,
+    envPath: undefined
   };
 
   const config = Object.assign(defaultConfig, loaderUtils.getOptions(this));
@@ -33,9 +34,16 @@ module.exports = function(content) {
     fileName = filePath;
   }
 
-  return "const path = require('path');" +
-    "const filePath = path.join(" + (config.useDirname ? "__dirname" : "path.dirname(process.execPath)") + ", " + JSON.stringify(fileName) + ");" +
-    "try { global.process.dlopen(module, filePath); } " +
+  let srcDir = (config.useDirname ? "__dirname" : "path.dirname(process.execPath)");
+
+  if (config.envPath) {
+    srcDir = "process.env." + config.envPath;
+  }
+
+  return "const path = require('path'); let filePath; " +
+    "try { filePath = path.join(" + (srcDir) + ", " + JSON.stringify(fileName) + "); } " +
+    "catch(exception) { throw new Error('Cannot resolve ' + " + JSON.stringify(fileName) + " + ' in ' +" + (srcDir) + "); } " +
+    "if (filePath) try { global.process.dlopen(module, filePath); } " +
     "catch(exception) { throw new Error('Cannot open ' + filePath + ': ' + exception); }";
 };
 
