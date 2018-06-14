@@ -28,7 +28,7 @@ module.exports = function(content) {
 
     if (path.isAbsolute(filePath)) {
       return "try { global.process.dlopen(module, " + JSON.stringify(filePath) + "); } " +
-        "catch(exception) { throw new Error('Cannot open ' + " + filePath + " + ': ' + exception); };";
+        "catch(exception) { throw new Error('Cannot open ' + " + JSON.stringify(filePath) + " + ': ' + exception); };";
     }
     fileName = filePath;
   }
