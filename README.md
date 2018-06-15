@@ -16,10 +16,10 @@ Update `webpack.config.js` file's rules:
 
 ```javascript
 module: {
-  rules: [
+  rules: [{
     test: /\.node$/,
     loader: 'awesome-node-loader'
-  ]
+  }]
 }
 ```
 
@@ -29,7 +29,7 @@ It is possible to adjust options:
 
 ```javascript
 module: {
-  rules: [
+  rules: [{
     test: /\.node$/,
     loader: 'awesome-node-loader',
     options: {
@@ -37,7 +37,7 @@ module: {
       rewritePath: path.resolve(__dirname, 'dist'),
       useDirname: false
     }
-  ]
+  }]
 }
 ```
 
@@ -47,8 +47,8 @@ This option allows to change the file name in the output directory. You can use 
 
 ### `rewritePath`
 
-This options allows to set an absolute path. Note that it needs to remain `undefined` if you are building a package with embedded files.
+This option allows to set an absolute path. Note that it needs to remain `undefined` if you are building a package with embedded files. (Default is `undefined`)
 
 ### `useDirname`
 
-This options chooses in between `_dirname` and `path.dirname(process.execPath)` when a relative `rewritePath` is passed.
+This option chooses in between `__dirname` and `path.dirname(process.execPath)` when a relative `rewritePath` is passed. (Default is `true`)
