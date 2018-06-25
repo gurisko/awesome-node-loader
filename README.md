@@ -16,10 +16,12 @@ Update `webpack.config.js` file's rules:
 
 ```javascript
 module: {
-  rules: [{
-    test: /\.node$/,
-    loader: 'awesome-node-loader'
-  }]
+  rules: [
+    {
+      test: /\.node$/,
+      loader: "awesome-node-loader"
+    }
+  ];
 }
 ```
 
@@ -29,15 +31,17 @@ It is possible to adjust options:
 
 ```javascript
 module: {
-  rules: [{
-    test: /\.node$/,
-    loader: 'awesome-node-loader',
-    options: {
-      name: '[hex].[ext]',
-      rewritePath: path.resolve(__dirname, 'dist'),
-      useDirname: false
+  rules: [
+    {
+      test: /\.node$/,
+      loader: "awesome-node-loader",
+      options: {
+        name: "[hex].[ext]",
+        rewritePath: path.resolve(__dirname, "dist"),
+        useDirname: false
+      }
     }
-  }]
+  ];
 }
 ```
 
@@ -51,4 +55,24 @@ This option allows to set an absolute path. Note that it needs to remain `undefi
 
 ### `useDirname`
 
-This option chooses in between `__dirname` and `path.dirname(process.execPath)` when a relative `rewritePath` is passed. (Default is `true`)
+This option chooses between `__dirname` and `path.dirname(process.execPath)` when a relative `rewritePath` is passed. (Default is `true`)
+
+### `envDir`
+
+When specified this changes the directory where the native module is located to the value of an environment variable on the running system. Useful, for example, when building AWS Lambda functions with serverless, where the environment variable `LAMBDA_TASK_ROOT` gives the top-level directory of the task. Note that this option overrides either setting of the `useDirname` option.
+
+Example:
+
+```javascript
+module: {
+  rules: [
+    {
+      test: /\.node$/,
+      loader: "awesome-node-loader",
+      options: {
+        envPath: "LAMBDA_TASK_ROOT"
+      }
+    }
+  ];
+}
+```
