@@ -1,12 +1,14 @@
-# Node Native Loader
+Node Native Loader [![npm version](https://badge.fury.io/js/awesome-node-loader.svg)](https://badge.fury.io/js/awesome-node-loader)
+============
 
 Module for loading native node files for webpack (including webpack@4 support).
 
-## Install
+## Installation
 
 Add the package to the `package.json` file:
 
 ```bash
+$ npm install awesome-node-loader --save-dev
 $ yarn add --dev awesome-node-loader
 ```
 
